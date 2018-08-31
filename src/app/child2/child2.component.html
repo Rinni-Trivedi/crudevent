@@ -1,0 +1,91 @@
+
+  <div class="container-fluid">
+    <div class="row">
+    <div class="col-12 pt-3">
+        <h4>Angular 6</h4>
+        <button type="button" class="btn btn-primary">User : Rinni</button>
+    </div>
+    </div>
+
+      <!-- <div class="col-12 pt-1">
+          <button type="button" class="btn btn-primary">Add Event</button>
+      </div>
+     </div> -->
+     <div class="row">
+      <div class="p-4 col-6 ">
+        <div class="cusborder rounded">
+          <div class="form-group">
+          <label class="">Search </label>
+          <input type="text" id="inputName" [(ngModel)]="inputName" (keyup)="FilterByName()" />
+          <!-- <input type="button" (click)="" value="Apply" /> -->
+        </div>
+          <!--TABLE-->
+          <table class="table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Event Name</th>
+                  <th>Reg Fees</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of items; let i = index">
+                  <th scope="row"><a class="mousepointer" (click)="edititem(item,i)">Edit </a>|
+                                  <a class="mousepointer" (click)="deleteitem(i)">Delete </a></th>
+                  <td>
+                    <a routerLink="/child3">{{item.pname}}</a></td>
+                  <td>${{item.price | number : '1.2-2'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          <!--END TABLE-->
+        </div>
+      </div>
+      <div class="col-6">
+       <span [hidden]="!addTitle">Add Event</span>
+       <span [hidden]="!editTitle">Edit Product</span>
+        <form [formGroup]="loginForm" (ngSubmit)="doAddition()" class="">
+
+          <div class="form-group">
+            <label class="col-xs-4 control-label" for="pname">Name : </label>
+            <div class="col-xs-8">
+              <input type="text" style="width: 300px" class="form-control" required formControlName="pname">
+              <div *ngIf="loginForm.controls['pname'].touched && loginForm.get('pname').hasError('required')" class="alert alert-danger">
+                  The Event Name  is required !
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xs-4 control-label" for="price">Registration Fees: </label>
+            <div class="col-xs-8">
+              <input type="number"  step="0.01"  style="width: 300px" class="form-control" formControlName="price">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-12">
+              <button type="submit" class="btn btn-default" >Submit</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+    <!-- <button type="button" class="btn btn-primary" (click)="openModalWithComponent()">Create modal with component</button>
+
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">{{title}}</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <ul *ngIf="list.length">
+        <li *ngFor="let item of list">{{item}}</li>
+      </ul>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+    </div> -->
+
+</div>
